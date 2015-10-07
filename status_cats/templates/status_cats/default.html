@@ -1,5 +1,6 @@
 {% extends base_template %}
 
 {% block content %}
+  <h1>That's a {{ status_code }}</h1>
   <img src="{{ cat_url }}" alt="status cat for HTTP {{ status_code }}">
 {% endblock %}

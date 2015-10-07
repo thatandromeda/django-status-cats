@@ -2,7 +2,9 @@
 # Yes, we could do http.cat for this, and get easier URLs, but Flickr is
 # more likely to stick around.
 
-CAT_URLs ={
+# https://tools.ietf.org/html/rfc2616.html#section-10
+
+CAT_URLS = {
     # HTTP_100_CONTINUE
     100: 'https://c2.staticflickr.com/8/7162/6512768893_a821929823_b.jpg',
 
