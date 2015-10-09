@@ -1,6 +1,7 @@
-
 # Yes, we could do http.cat for this, and get easier URLs, but Flickr is
 # more likely to stick around.
+
+# Photo credit: https://www.flickr.com/photos/girliemac/sets/72157628409467125/
 
 # https://tools.ietf.org/html/rfc2616.html#section-10
 
@@ -21,7 +22,7 @@ CAT_URLS = {
     202: 'https://c2.staticflickr.com/8/7167/6540479079_16e97a624a_b.jpg',
 
     # HTTP_203_NON_AUTHORITATIVE_INFORMATION
-    #203: 
+    #203:
 
     # HTTP_204_NO_CONTENT
     204: 'https://c2.staticflickr.com/8/7154/6547319943_442c6509bb_b.jpg',
@@ -186,7 +187,3 @@ CAT_URLS = {
     # HTTP_599_NETWORK_CONNECT_TIMEOUT_ERROR
     599: 'https://c2.staticflickr.com/8/7033/6509400929_57ec73af05_b.jpg',
 }
-
-CAT_TEMPLATE = 'status_cats/default.html'
-
-BASE_TEMPLATE = 'base.html'
