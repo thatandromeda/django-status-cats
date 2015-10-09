@@ -1,5 +1,5 @@
 from django.views.generic import View
-from django.http import HttpResponse
+from django.shortcuts import render
 
 from status_cats.constants import CAT_URLS
 
@@ -15,6 +15,4 @@ class StatusCodeView(View):
         code = kwargs['status_code']
         assert int(code) in CAT_URLS.keys()
 
-        response = HttpResponse()
-        response.status_code = code
-        return response
+        return render(request, 'base.html', status=code)

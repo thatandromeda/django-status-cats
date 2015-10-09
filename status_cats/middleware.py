@@ -15,22 +15,28 @@ TODO:
       and should contain 200 by default
     * CAT_TEMPLATE, BASE_TEMPLATE should get from settings
       but have a default (content-block-name looks hard)
-* add version info
+    * consider a few options for your settings API:
+        https://github.com/tomchristie/django-rest-framework/blob/master/rest_framework/settings.py
+        https://stackoverflow.com/questions/16953293/what-is-the-equivalent-to-django-conf-global-settings-for-third-party-apps
+        https://github.com/pinax/django-stripe-payments/blob/master/payments/settings.py
+            ^^^ probably this last
 * add README, including tested versions/dependencies and cat template override instructions
 * add to pypi
 * add proper credit to https://www.flickr.com/photos/girliemac/sets/72157628409467125/
 * consider setting to handle only RFC compliant ones?
 * deal with RFC-compliant codes not present in photo set
-* fill in _render_with_header
-* use _render_with_header for non-template get()
 
 NEEDS TESTING:
-* write function to capture response and render associated cat template
-* write views that return each status code for testing
 * write tests
 
 
 DONE:
+* add version info
+* write function to capture response and render associated cat template
+* write views that return each status code for testing
+* fill in _render_with_header
+* use _render_with_header for non-template get() <- actually this is on the webserver side
+
 
 """
 
@@ -46,22 +52,36 @@ class StatusCatMiddleware(object):
         return render(request, CAT_TEMPLATE,
             {'cat_url': cat_url,
              'base_template': BASE_TEMPLATE,
-             'status_code': status_code})
+             'status_code': status_code},
+             status=status_code)
 
-    def _render_with_header(self, request, response):
+
+    def _add_header(self, response):
         """
         This adds the image URL for the relevant status code to the
         HTTP headers, but does not otherwise change the HTTP response.
-        """
-        pass
 
-    def process_exception(self, request, exception):
-        # read up on django exception handling and determine if this should
-        # ever throw anything other than 500
-        pass
+        Use this for HttpResponses that do not render templates (e.g.
+        fetching favicons, stylesheets, images, etc.), or when users actually
+        want to render their app's template and not cats. (There's no accounting
+        for tastes.)
+        """
+        status_code = response.status_code
+        cat_url = CAT_URLS[int(status_code)]
+        response['X-Status-Cat'] = cat_url
+        return response
+
+
+    def _inner_process(self, request, response):
+        # It's important to render the response first and add the header
+        # second, as the render process will overwrite the headers.
+        response = self._render_with_cat(request, response)
+        return self._add_header(response)
+
 
     def process_template_response(self, request, response):
-        return self._render_with_cat(request, response)
+        self._inner_process(request, response)
+
 
     def process_response(self, request, response):
-        return self._render_with_cat(request, response)
+        self._inner_process(request, response)
