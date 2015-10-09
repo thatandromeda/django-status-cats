@@ -33,11 +33,15 @@ _Default value_: `status_cats/default.html` (provided by django-status-cats).
 
 _Default value_: `base.html`.
 
-`STATUS_CATS_HEADER_OVERRIDE_ONLY` (list of integers): The HTTP status codes for which responses should have a cat-themed header added, but should _not_ be rendered with a cat-themed template.
+`STATUS_CATS_HEADER_ONLY` (list of integers): The HTTP status codes for which responses should have a cat-themed header added, but should _not_ be rendered with a cat-themed template.
 
 _Default value_: `[200]`
 
 That is, any of your pages which respond with `200 OK` will be rendered in the normal manner, but all other responses will be presented to the user as cat web pages.
+
+`STATUS_CATS_HEADER_ONLY_ALL` (Boolean): If True, only apply HTTP `X-Status-Cat` headers to all responses; never render cat templates. If False, observe behavior of `STATUS_CATS_HEADER_OVERRIDE_ONLY` if specified, else defaults.
+
+_Default value_: `False`
 
 ## Development and testing
 
@@ -48,3 +52,8 @@ If you'd like to run the test suite,
 
 If you'd like to run the test app to see your changes in the browser,
 `python test_projectanage.py runserver`. URLs of the form `/[status_code]` provoke HTTP responses of the appropriate status code.
+
+## Dependencies
+Just Django.
+
+This has been tested on Django 1.8.5, but probably works at least as far back as Django 1.4. (Though if you're running anything < 1.7, if possible please  update to a supported version!)

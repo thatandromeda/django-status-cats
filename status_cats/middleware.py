@@ -6,15 +6,15 @@ status codes.
 from django.shortcuts import render
 
 from status_cats.constants import CAT_URLS
-from status_cats.settings import CAT_TEMPLATE, BASE_TEMPLATE, HEADER_OVERRIDE_ONLY
+from status_cats.settings import (CAT_TEMPLATE,
+                                  BASE_TEMPLATE,
+                                  HEADER_OVERRIDE_ONLY,
+                                  HEADER_OVERRIDE_ALL)
 
 """
 TODO:
 
-* add README, including tested versions/dependencies and cat template override instructions
 * add to pypi
-* consider setting to handle only RFC compliant ones?
-* deal with RFC-compliant codes not present in photo set
 
 NEEDS TESTING:
 * write tests
@@ -30,7 +30,10 @@ DONE:
 * add proper credit to https://www.flickr.com/photos/girliemac/sets/72157628409467125/
 * add config options:
     * a list of status codes to modify only headers - should contain 200 by default
-
+* consider setting to handle only RFC compliant ones?
+* deal with RFC-compliant codes not present in photo set
+* add README, including tested versions/dependencies and cat template override instructions
+* make sure config overrides work
 
 
 """
@@ -67,7 +70,7 @@ class StatusCatMiddleware(object):
         status_code = int(response.status_code)
         cat_url = CAT_URLS[status_code]
 
-        if status_code in HEADER_OVERRIDE_ONLY:
+        if HEADER_OVERRIDE_ALL or (status_code in HEADER_OVERRIDE_ONLY):
             return self._add_header(response, cat_url)
         else:
             # It's important to render the response first and add the header

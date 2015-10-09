@@ -1,5 +1,7 @@
 # Django settings for test_project project.
 
+STATUS_CATS_HEADER_ONLY = [451, 201]
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 

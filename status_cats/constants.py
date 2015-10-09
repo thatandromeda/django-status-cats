@@ -1,9 +1,14 @@
-# Yes, we could do http.cat for this, and get easier URLs, but Flickr is
-# more likely to stick around.
+"""
+A handy place to stash a dict of http status codes and cat pic URLs.
 
-# Photo credit: https://www.flickr.com/photos/girliemac/sets/72157628409467125/
+This includes all the cat pics found at
+https://www.flickr.com/photos/girliemac/sets/72157628409467125/. There
+are some RFC 7231 status codes not represented in here, and some
+nonstandard codes (e.g. from WebDAV or Microsoft IIS) that are.
 
-# https://tools.ietf.org/html/rfc2616.html#section-10
+Yes, we could do http.cat for this, and get easier URLs, but Flickr is
+more likely to stick around.
+"""
 
 CAT_URLS = {
     # HTTP_100_CONTINUE
@@ -21,18 +26,13 @@ CAT_URLS = {
     # HTTP_202_ACCEPTED
     202: 'https://c2.staticflickr.com/8/7167/6540479079_16e97a624a_b.jpg',
 
-    # HTTP_203_NON_AUTHORITATIVE_INFORMATION
-    #203:
-
     # HTTP_204_NO_CONTENT
     204: 'https://c2.staticflickr.com/8/7154/6547319943_442c6509bb_b.jpg',
-
-    # HTTP_205_RESET_CONTENT
-    #205
 
     # HTTP_206_PARTIAL_CONTENT
     206: 'https://c2.staticflickr.com/8/7021/6514473163_4e2a681cbd_b.jpg',
 
+    # HTTP_207_MULTI_STATUS
     207: 'https://c2.staticflickr.com/8/7141/6514472979_c44518c4ce_b.jpg',
 
     # HTTP_300_MULTIPLE_CHOICES
@@ -52,9 +52,6 @@ CAT_URLS = {
 
     # HTTP_305_USE_PROXY
     305: 'https://c2.staticflickr.com/8/7002/6540365403_01e93b44a3_b.jpg',
-
-    # HTTP_306_RESERVED
-    #306
 
     # HTTP_307_TEMPORARY_REDIRECT
     307: 'https://c2.staticflickr.com/8/7161/6513001269_edff1f0079_b.jpg',
@@ -79,9 +76,6 @@ CAT_URLS = {
 
     # HTTP_406_NOT_ACCEPTABLE
     406: 'https://c2.staticflickr.com/8/7143/6508023119_b681209a58_b.jpg',
-
-    # HTTP_407_PROXY_AUTHENTICATION_REQUIRED
-    #07: 
 
     # HTTP_408_REQUEST_TIMEOUT
     408: 'https://c2.staticflickr.com/8/7018/6508023179_bab3eebce8_b.jpg',
@@ -133,9 +127,6 @@ CAT_URLS = {
     # HTTP_426_UPGRADE_REQUIRED
     426: 'https://c2.staticflickr.com/8/7167/6509400771_33a1f59890_b.jpg',
 
-    # HTTP_428_PRECONDITION_REQUIRED
-    #428
-
     # HTTP_429_TOO_MANY_REQUESTS
     429: 'https://c2.staticflickr.com/8/7152/6509400997_25bb1bb4fb_b.jpg',
 
@@ -154,20 +145,11 @@ CAT_URLS = {
     # HTTP_500_INTERNAL_SERVER_ERROR
     500: 'https://c2.staticflickr.com/8/7001/6509400855_aaaf915871_b.jpg',
 
-    # HTTP_501_NOT_IMPLEMENTED
-    #501
-
     # HTTP_502_BAD_GATEWAY
     502: 'https://c2.staticflickr.com/8/7158/6508023429_735b433a36_b.jpg',
 
     # HTTP_503_SERVICE_UNAVAILABLE
     503: 'https://c2.staticflickr.com/8/7157/6540643319_7945715c3a_b.jpg',
-
-    # HTTP_504_GATEWAY_TIMEOUT
-    #504
-
-    # HTTP_505_HTTP_VERSION_NOT_SUPPORTED
-    #505
 
     # HTTP_506_VARIANT_ALSO_NEGOTIATES
     506: 'https://c2.staticflickr.com/8/7155/6540643279_d5126cd8f6_b.jpg',
@@ -181,9 +163,22 @@ CAT_URLS = {
     # HTTP_509_BANDWIDTH_LIMIT_EXCEEDED
     509: 'https://c2.staticflickr.com/8/7154/6540399865_7bb98e69d2_b.jpg',
 
-    # HTTP_511_NETWORK_AUTHENTICATION_REQUIRED
-    #511
-
     # HTTP_599_NETWORK_CONNECT_TIMEOUT_ERROR
     599: 'https://c2.staticflickr.com/8/7033/6509400929_57ec73af05_b.jpg',
 }
+
+"""
+The following codes are part of RFC 7231, but have no cat pics:
+    HTTP_203_NON_AUTHORITATIVE_INFORMATION
+    HTTP_205_RESET_CONTENT
+    HTTP_306_RESERVED (reserved, but unused)
+    HTTP_501_NOT_IMPLEMENTED
+    HTTP_504_GATEWAY_TIMEOUT
+    HTTP_505_HTTP_VERSION_NOT_SUPPORTED
+
+The following codes are part of other RFCs, but have no cat pics:
+    HTTP_407_PROXY_AUTHENTICATION_REQUIRED (RFC 7235)
+    HTTP_428_PRECONDITION_REQUIRED (RFC 6585)
+    HTTP_511_NETWORK_AUTHENTICATION_REQUIRED (RFC 6585)
+
+"""

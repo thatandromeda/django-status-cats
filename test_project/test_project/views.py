@@ -1,3 +1,4 @@
+from django.core.exceptions import SuspiciousOperation
 from django.views.generic import View
 from django.shortcuts import render
 
@@ -16,3 +17,10 @@ class StatusCodeView(View):
         assert int(code) in CAT_URLS.keys()
 
         return render(request, 'base.html', status=code)
+
+class ExceptionView(View):
+    """
+    For testing exception responses.
+    """
+    def get(self, request, *args, **kwargs):
+        raise SuspiciousOperation

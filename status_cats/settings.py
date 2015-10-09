@@ -13,7 +13,7 @@ from django.conf import settings
 
 # HttpResponses whose status codes are in this list will have status cat headers
 # added but will not be rendered with cat templates.
-HEADER_OVERRIDE_ONLY_DEFAULT = [200]
+HEADER_ONLY_DEFAULT = [200]
 
 CAT_TEMPLATE = getattr(
     settings,
@@ -29,6 +29,12 @@ BASE_TEMPLATE = getattr(
 
 HEADER_OVERRIDE_ONLY = getattr(
     settings,
-    "STATUS_CATS_HEADER_OVERRIDE_ONLY",
-    HEADER_OVERRIDE_ONLY_DEFAULT
+    "STATUS_CATS_HEADER_ONLY",
+    HEADER_ONLY_DEFAULT
+)
+
+HEADER_OVERRIDE_ALL = getattr(
+    settings,
+    "STATUS_CATS_HEADER_ONLY_ALL",
+    False
 )
