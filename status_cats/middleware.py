@@ -17,7 +17,6 @@ TODO:
 * add to pypi
 
 NEEDS TESTING:
-* write tests
 
 
 DONE:
@@ -34,6 +33,8 @@ DONE:
 * deal with RFC-compliant codes not present in photo set
 * add README, including tested versions/dependencies and cat template override instructions
 * make sure config overrides work
+* write tests
+
 
 
 """

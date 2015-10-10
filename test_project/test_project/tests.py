@@ -1,21 +1,21 @@
-from django.test import TestCase, RequestFactory
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.test import TestCase
 from django.test.client import Client
 
 from status_cats.constants import CAT_URLS
-from status_cats.middleware import StatusCatMiddleware
 
 class StatusCatTestCase(TestCase):
     def setUp(self):
-        self.middleware = StatusCatMiddleware()
-        self.request = RequestFactory()
         self.client = Client()
 
-    def test_render_with_cats(self):
+    def test_cat_ubiquity(self):
         for cat_url in CAT_URLS:
-            response = self.client.get('status_code_response', args=(cat_url,))
-            self.assertEqual(response.status_code, cat_url)
-            self.assertIn(CAT_URLS[cat_url], response.context)
+            url = reverse('status_code_response', args=(cat_url,))
+            response = self.client.get(url)
 
-    def test_render_headers(self):
-        # need to test expected behavior when we decide what it is
-        assert False
+            self.assertEqual(int(response.status_code), int(cat_url))
+            self.assertEqual(response['X-Status-Cat'], CAT_URLS[cat_url])
+
+            if cat_url not in settings.STATUS_CATS_HEADER_ONLY:
+                self.assertEqual(CAT_URLS[cat_url], response.context['cat_url'])
