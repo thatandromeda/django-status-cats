@@ -10,7 +10,7 @@ The default settings will break your project (_but with cats!_), so you probably
 
 ## Installation
 
-`python setup.py install`
+`pip install django-status-cats`
 
 ## Configuration
 
@@ -59,3 +59,5 @@ If you'd like to run the test app to see your changes in the browser,
 Just Django.
 
 This has been tested on Django 1.8.5, but probably works at least as far back as Django 1.4. (Though if you're running anything < 1.7, if possible please  update to a supported version!)
+
+It doesn't have any obvious reason to fail on python3, but running the test_project under python3 leads to occasional errors. They may be in Django, not django-status-cats, but I'm not going to certify this as python3 compliant until I figure that out.

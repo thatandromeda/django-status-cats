@@ -15,6 +15,7 @@ from status_cats.settings import (CAT_TEMPLATE,
 TODO:
 
 * add to pypi
+* push git version tag
 
 """
 

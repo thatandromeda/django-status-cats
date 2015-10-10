@@ -10,7 +10,7 @@ package_data = {
 setup(
   name = 'django-status-cats',
   packages = ['status_cats'],
-  version = '0.1',
+  version = '0.1.1',
   package_data = package_data,
   description = 'Django middleware for adding HTTP status cats to your responses ',
   author = 'Andromeda Yelton',
@@ -18,12 +18,14 @@ setup(
   url = 'https://github.com/thatandromeda/django-status-cats',
   download_url = 'https://github.com/thatandromeda/django-status-cats/tarball/0.1',
   license = 'CC0',
+  keywords='django middleware cats',
+  install_requires=['django'],
   classifiers = [
     'Framework :: Django',
     'License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication',
     'Intended Audience :: Developers',
-    'Development Status :: 2 - Pre-Alpha',
+    'Development Status :: 3 - Alpha',
     'Environment :: Web Environment',
-    'Programming Language :: Python',
+    'Programming Language :: Python :: 2',
     ],
 )
