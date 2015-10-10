@@ -16,27 +16,6 @@ TODO:
 
 * add to pypi
 
-NEEDS TESTING:
-
-
-DONE:
-* add version info
-* write function to capture response and render associated cat template
-* write views that return each status code for testing
-* fill in _render_with_header
-* use _render_with_header for non-template get() <- actually this is on the webserver side
-* CAT_TEMPLATE, BASE_TEMPLATE should get from settings but have a default (content-block-name looks hard)
-* add proper credit to https://www.flickr.com/photos/girliemac/sets/72157628409467125/
-* add config options:
-    * a list of status codes to modify only headers - should contain 200 by default
-* consider setting to handle only RFC compliant ones?
-* deal with RFC-compliant codes not present in photo set
-* add README, including tested versions/dependencies and cat template override instructions
-* make sure config overrides work
-* write tests
-
-
-
 """
 
 class StatusCatMiddleware(object):

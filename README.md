@@ -6,6 +6,8 @@ _Now you can_.  Install this middleware and your Django project will be 100% mor
 
 All `HttpResponse`s will get an added `X-Status-Cat` header linking to the appropriate cat photo. You may also render some or all of your `HttpResponse`s with status-code-appropriate cat pics. A simple configuration option lets you specify which status codes get which treatment.
 
+The default settings will break your project (_but with cats!_), so you probably want change them (see below).
+
 ## Installation
 
 `python setup.py install`
