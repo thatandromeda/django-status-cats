@@ -41,7 +41,7 @@ _Default value_: `[200]`
 
 That is, any of your pages which respond with `200 OK` will be rendered in the normal manner, but all other responses will be presented to the user as cat web pages.
 
-`STATUS_CATS_HEADER_ONLY_ALL` (Boolean): If True, only apply HTTP `X-Status-Cat` headers to all responses; never render cat templates. If False, observe behavior of `STATUS_CATS_HEADER_OVERRIDE_ONLY` if specified, else defaults.
+`STATUS_CATS_HEADER_ONLY_ALL` (Boolean): If True, only apply HTTP `X-Status-Cat` headers to all responses; never render cat templates. If False, observe behavior of `STATUS_CATS_HEADER_ONLY` if specified, else defaults.
 
 _Default value_: `False`
 
