@@ -11,13 +11,6 @@ from status_cats.settings import (CAT_TEMPLATE,
                                   HEADER_OVERRIDE_ONLY,
                                   HEADER_OVERRIDE_ALL)
 
-"""
-TODO:
-
-* add to pypi
-* push git version tag
-
-"""
 
 class StatusCatMiddleware(object):
 
